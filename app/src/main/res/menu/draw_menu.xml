@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawmenu_faceentry"
+            android:icon="@mipmap/faceentry"
+            android:title="人脸重录" />
+
+        <item
+            android:id="@+id/drawmenu_pwdmodify"
+            android:icon="@mipmap/pwdmodify"
+            android:title="密码修改" />
+
+        <item
+            android:id="@+id/drawmenu_setupsystem"
+            android:icon="@mipmap/setupsystem"
+            android:title="系统设置" />
+
+        <item
+            android:id="@+id/drawmenu_logout"
+            android:icon="@mipmap/logout"
+            android:title="注销登录" />
+
+    </group>
+</menu>

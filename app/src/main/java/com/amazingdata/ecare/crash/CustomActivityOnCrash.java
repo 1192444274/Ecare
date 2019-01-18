@@ -346,7 +346,7 @@ public final class CustomActivityOnCrash {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         if (intent.getComponent() != null) {
             //If the class name has been set, we force it to simulate a Launcher launch.
-            //If we don't do this, if you restart from the error activity, then press home,
+            //If we don't do this, if you restart from the error activity, then press home_uncheck,
             //and then launch the activity from the launcher, the main activity appears twice on the backstack.
             //This will most likely not have any detrimental effect because if you set the Intent component,
             //if will always be launched regardless of the actions specified here.

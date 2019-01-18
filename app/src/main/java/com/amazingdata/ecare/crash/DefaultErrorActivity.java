@@ -33,8 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import me.goldze.mvvmhabit.R;
-
+import com.amazingdata.ecare.R;
 
 public final class DefaultErrorActivity extends AppCompatActivity {
 
@@ -61,7 +60,7 @@ public final class DefaultErrorActivity extends AppCompatActivity {
 
         final CaocConfig config = CustomActivityOnCrash.getConfigFromIntent(getIntent());
 
-        if (config.isShowRestartButton() && config.getRestartActivityClass()!=null) {
+        if (config.isShowRestartButton() && config.getRestartActivityClass() != null) {
             restartButton.setText(R.string.customactivityoncrash_error_activity_restart_app);
             restartButton.setOnClickListener(new View.OnClickListener() {
                 @Override

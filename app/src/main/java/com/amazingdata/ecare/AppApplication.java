@@ -2,6 +2,7 @@ package com.amazingdata.ecare;
 
 import com.amazingdata.ecare.base.BaseApplication;
 import com.amazingdata.ecare.crash.CaocConfig;
+import com.amazingdata.ecare.ui.MainActivity;
 
 /**
  * @author Xiong
