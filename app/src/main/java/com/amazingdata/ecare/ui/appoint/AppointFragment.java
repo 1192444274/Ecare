@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.amazingdata.ecare.R;
+import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
 import com.amazingdata.ecare.databinding.FragmentAppointBinding;
 
@@ -19,4 +20,10 @@ public class AppointFragment extends BaseFragment<FragmentAppointBinding, Appoin
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_appoint;
     }
+
+    @Override
+    public int initVariableId() {
+        return BR.appointViewModel;
+    }
+
 }

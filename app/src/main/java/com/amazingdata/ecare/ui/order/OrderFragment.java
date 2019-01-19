@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.amazingdata.ecare.R;
+import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
 import com.amazingdata.ecare.databinding.FragmentOrderBinding;
 
@@ -18,4 +19,10 @@ public class OrderFragment extends BaseFragment<FragmentOrderBinding, OrderViewM
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_order;
     }
+
+    @Override
+    public int initVariableId() {
+        return BR.orderViewModel;
+    }
+
 }

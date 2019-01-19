@@ -5,13 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.R;
+import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseActivity;
 import com.amazingdata.ecare.base.BaseViewModel;
 import com.amazingdata.ecare.databinding.ActivityMainBinding;
@@ -35,11 +36,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     @Override
     public int initVariableId() {
-        return BR.viewModel;
+        return BR.mainViewModel;
     }
 
     @Override
     public void initData() {
+        // 初始化toolbar
+        initToolBar();
+
         // 初始化Fragments
         mFragments = new ArrayList<>();
         mFragments.add(new AppointFragment());
@@ -108,6 +112,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
                 // 关闭drawerLayout
                 binding.mainDrawer.closeDrawer(binding.mainNavigator);
                 return true;
+            }
+        });
+    }
+
+    private void initToolBar() {
+        binding.includetoolbar.toolbarLeft.setImageResource(R.mipmap.personal);
+        binding.includetoolbar.toolbarLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.mainDrawer.openDrawer(Gravity.LEFT);
             }
         });
     }

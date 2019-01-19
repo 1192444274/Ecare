@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="orderViewModel"
             type="com.amazingdata.ecare.ui.order.OrderViewModel" />
 
     </data>

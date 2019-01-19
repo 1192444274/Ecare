@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.amazingdata.ecare.R;
+import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
 import com.amazingdata.ecare.databinding.FragmentRecordBinding;
 
@@ -18,6 +19,11 @@ public class RecordFragment extends BaseFragment<FragmentRecordBinding, RecordVi
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return R.layout.fragment_record;
+    }
+
+    @Override
+    public int initVariableId() {
+        return BR.recordViewModel;
     }
 
 }

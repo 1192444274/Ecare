@@ -22,6 +22,7 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     //support
     api rootProject.ext.support["support-v4"]
@@ -48,12 +49,14 @@ dependencies {
     //glide图片加载库
     api rootProject.ext.dependencies.glide
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-    //recyclerview的databinding套装
-    api rootProject.ext.dependencies.bindingcollectionadapter
-    api(rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]) {
-        exclude group: 'com.android.support'
-    }
+//    //recyclerview的databinding套装
+//    api rootProject.ext.dependencies.bindingcollectionadapter
+//    api(rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]) {
+//        exclude group: 'com.android.support'
+//    }
     //Google LiveData和ViewModel组件
     api rootProject.ext.dependencies["lifecycle-extensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    // XBanner
+    api rootProject.ext.dependencies["XBanner"]
 }

@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="mainViewModel"
             type="com.amazingdata.ecare.base.BaseViewModel" />
 
     </data>
@@ -20,6 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <include
+                android:id="@+id/includetoolbar"
+                layout="@layout/toolbar" />
 
             <FrameLayout
                 android:id="@+id/main_frame"

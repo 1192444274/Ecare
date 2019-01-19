@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="recordViewModel"
             type="com.amazingdata.ecare.ui.record.RecordViewModel" />
 
     </data>

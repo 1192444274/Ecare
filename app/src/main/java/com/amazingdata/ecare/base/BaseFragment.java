@@ -38,7 +38,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
-//        viewModelId = initVariableId();
+        viewModelId = initVariableId();
         viewModel = initViewModel();
         if (viewModel == null) {
             Class modelClass;
@@ -116,7 +116,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
      *
      * @return BR的id
      */
-//    public abstract int initVariableId();
+    public abstract int initVariableId();
 
     /**
      * 初始化ViewModel
