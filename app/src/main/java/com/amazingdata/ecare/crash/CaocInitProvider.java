@@ -23,7 +23,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-
+// 偷来的CaocInitProvider 崩溃的初始化提供者
 public class CaocInitProvider extends ContentProvider {
 
     public boolean onCreate() {

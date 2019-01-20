@@ -47,6 +47,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 
+// 偷来的CustomActivityOnCrash
 public final class CustomActivityOnCrash {
 
     private final static String TAG = "CustomActivityOnCrash";

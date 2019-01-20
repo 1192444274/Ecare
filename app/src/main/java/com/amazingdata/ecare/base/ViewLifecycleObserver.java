@@ -9,6 +9,7 @@ import android.arch.lifecycle.OnLifecycleEvent;
  * @author Xiong
  * @date 2019/1/18 - 14:05
  */
+// 偷来的ViewLifecycleObserver
 public interface ViewLifecycleObserver extends LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)

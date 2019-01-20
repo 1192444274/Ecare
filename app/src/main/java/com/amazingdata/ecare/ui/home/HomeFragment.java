@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.stx.xhb.xbanner.XBanner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -33,9 +32,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 // Home主页Fragment
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> {
-
-    // 保存图片数据的类
-    private List<Notice> datas;
 
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,13 +58,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 .subscribe(new Consumer<List<Notice>>() {
                     @Override
                     public void accept(List<Notice> notices) throws Exception {
-                        datas = notices;
-                        List<String> imgUrls = new ArrayList<>();
-                        for (Notice notice : notices) {
-                            imgUrls.add(notice.getIconUrl());
-                        }
                         // 设置图片资源Url
-                        binding.homeXbanner.setData(imgUrls, null);
+                        binding.homeXbanner.setBannerData(notices);
                     }
                 });
         // banner 设置点击监听
@@ -76,7 +67,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             @Override
             public void onItemClick(XBanner banner, Object model, View view, int position) {
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(Constant.BUNDLE_KEY, datas.get(position));
+                bundle.putParcelable(Constant.BUNDLE_KEY, (Notice) model);
                 HomeFragment.this.startActivity(NoticeDetailActivity.class, bundle);
             }
         });
@@ -85,7 +76,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             @Override
             public void loadBanner(XBanner banner, Object model, View view, int position) {
                 Glide.with(getActivity())
-                        .load((String) model)
+                        .load(((Notice) model).getIconUrl())
                         .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher)) // 未显示的占位符
                         .apply(new RequestOptions().error(R.mipmap.ic_launcher_round)) // 图片获取失败的占位符
                         .into((ImageView) view);

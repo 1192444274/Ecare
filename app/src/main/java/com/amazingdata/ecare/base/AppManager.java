@@ -9,11 +9,13 @@ import java.util.Stack;
  * @author Xiong
  * @date 2019/1/17 - 22:40
  */
+// 偷的AppManager,用于管理Activity和Fragment
 public class AppManager {
     private static Stack<Activity> activityStack;
     private static Stack<Fragment> fragmentStack;
     private static AppManager instance;
 
+    // 私有化构造器
     private AppManager() {
     }
 

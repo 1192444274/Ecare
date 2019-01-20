@@ -22,10 +22,15 @@ import java.lang.reflect.Type;
  * @author Xiong
  * @date 2019/1/18 - 14:17
  */
+// 偷的BaseFragment基类
 public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseViewModel> extends Fragment {
+    // binding 对象
     protected B binding;
+    // viewModel 对象
     protected VM viewModel;
+    // 绑定的viewModel id (BR中)
     private int viewModelId;
+    // MaterialDialog 对象
     private MaterialDialog dialog;
 
     @Override
@@ -54,6 +59,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         }
         // 页面数据初始化方法
         initData();
+        // 联系binding对象和viewModel
         binding.setVariable(viewModelId, viewModel);
         //让ViewModel拥有View的生命周期感应
         getLifecycle().addObserver(viewModel);
@@ -74,6 +80,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         binding.unbind();
     }
 
+    // 显示耗时Dialog
     public void showDialog(String title) {
         if (dialog != null) {
             dialog.show();
@@ -83,16 +90,19 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         }
     }
 
+    // 移除耗时Dialog
     public void dismissDialog() {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
     }
 
+    // 交由继承类重写
     public void initData() {
 
     }
 
+    // 交由继承类重写
     public void initParam() {
 
     }
@@ -120,25 +130,13 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         startActivity(intent);
     }
 
-    /**
-     * 初始化根布局
-     *
-     * @return 布局layout的id
-     */
+    // 必须由继承类重写,返回当前的根布局文件的R id
     public abstract int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
+    // 必须由继承类重写,返回当前viewModel的BR id
     public abstract int initVariableId();
 
-    /**
-     * 初始化ViewModel
-     *
-     * @return 继承BaseViewModel的ViewModel
-     */
+    // 交给继承类重写,返回当前的具体的ViewModel对象
     public VM initViewModel() {
         return null;
     }

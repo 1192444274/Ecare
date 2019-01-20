@@ -10,12 +10,16 @@ import android.support.annotation.NonNull;
  * @author Xiong
  * @date 2019/1/18 - 14:00
  */
+// 偷得BaseViewModel基类
 public class BaseViewModel extends AndroidViewModel implements ViewLifecycleObserver {
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
     }
 
+    /**
+     * 以下的生命周期方法全部交由继承类来实现
+     */
     @Override
     public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
 

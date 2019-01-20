@@ -11,6 +11,7 @@ import com.amazingdata.ecare.utils.Utils;
  * @author Xiong
  * @date 2019/1/17 - 22:36
  */
+// 偷的BaseApplication基类
 public class BaseApplication extends Application {
     private static Application sInstance;
 

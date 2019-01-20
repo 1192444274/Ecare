@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import com.amazingdata.ecare.R;
 
+// 偷来的DefaultErrorActivity 用于崩溃后的显示错误页面
 public final class DefaultErrorActivity extends AppCompatActivity {
 
     @SuppressLint("PrivateResource")

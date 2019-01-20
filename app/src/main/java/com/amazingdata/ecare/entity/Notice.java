@@ -3,6 +3,8 @@ package com.amazingdata.ecare.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +12,7 @@ import java.util.Date;
  * @author Xiong
  * @date 2019/1/19 - 11:25
  */
-public class Notice implements Parcelable, Serializable {
+public class Notice extends SimpleBannerInfo implements Parcelable, Serializable {
     private String title;
     private Date time;
     private String content;
@@ -97,5 +99,10 @@ public class Notice implements Parcelable, Serializable {
         dest.writeString(title);
         dest.writeString(content);
         dest.writeString(iconUrl);
+    }
+
+    @Override
+    public Object getXBannerUrl() {
+        return iconUrl;
     }
 }

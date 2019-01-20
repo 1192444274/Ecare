@@ -21,10 +21,15 @@ import java.lang.reflect.Type;
  * @author Xiong
  * @date 2019/1/18 - 13:51
  */
+// 偷的BaseActivity基类
 public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseViewModel> extends AppCompatActivity implements LifecycleOwner {
+    // binding 对象
     protected B binding;
+    // viewModel 对象
     protected VM viewModel;
+    // 绑定的viewModel id (BR中)
     private int viewModelId;
+    // MaterialDialog 对象
     private MaterialDialog dialog;
 
     @Override
@@ -47,15 +52,15 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVie
         binding.unbind();
     }
 
+    // 交给继承类重写
     public void initParam() {
 
     }
 
-    /**
-     * 注入绑定
-     */
+    // 注入绑定
     private void initViewDataBinding(Bundle savedInstanceState) {
-        //DataBindingUtil类需要在project的build中配置 dataBinding {enabled true }, 同步后会自动关联android.databinding包
+        // DataBindingUtil类需要在project的build中配置 dataBinding { enabled true }
+        // 同步后会自动关联android.databinding包
         binding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState));
         viewModelId = initVariableId();
         viewModel = initViewModel();
@@ -76,10 +81,12 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVie
         getLifecycle().addObserver(viewModel);
     }
 
+    // 交给继承类重写
     public void initData() {
 
     }
 
+    // 显示耗时dialog
     public void showDialog(String title) {
         if (dialog != null) {
             dialog.show();
@@ -89,31 +96,20 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVie
         }
     }
 
+    // 移除dialog
     public void dismissDialog() {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
     }
 
-    /**
-     * 初始化根布局
-     *
-     * @return 布局layout的id
-     */
+    // 必须由继承类重写,返回当前的根布局文件的R id
     public abstract int initContentView(Bundle savedInstanceState);
 
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
+    // 必须由继承类重写,返回当前viewModel的BR id
     public abstract int initVariableId();
 
-    /**
-     * 初始化ViewModel
-     *
-     * @return 继承BaseViewModel的ViewModel
-     */
+    // 交给继承类重写,返回当前的具体的ViewModel对象
     public VM initViewModel() {
         return null;
     }
