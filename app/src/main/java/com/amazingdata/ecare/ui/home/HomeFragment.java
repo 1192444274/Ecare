@@ -3,7 +3,6 @@ package com.amazingdata.ecare.ui.home;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,10 @@ import android.widget.ImageView;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
+import com.amazingdata.ecare.base.DialogListener;
 import com.amazingdata.ecare.databinding.FragmentHomeBinding;
 import com.amazingdata.ecare.entity.Notice;
+import com.amazingdata.ecare.ui.MainActivity;
 import com.amazingdata.ecare.ui.notice.NoticeDetailActivity;
 import com.amazingdata.ecare.utils.Constant;
 import com.bumptech.glide.Glide;
@@ -90,5 +91,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                         .into((ImageView) view);
             }
         });
+
     }
+
 }

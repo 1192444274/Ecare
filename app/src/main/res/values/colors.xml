@@ -8,4 +8,5 @@
     <color name="colorBasicText">#686868</color>
     <color name="colorTextBitDeep">#2c2c2c</color>
     <color name="colorTextBitLight">#802c2c2c</color>
+    <color name="colorLoginTextHint">#d2d2d2</color>
 </resources>

@@ -13,11 +13,51 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_background" />
+
+        <EditText
+            style="@style/login_view_style"
+            android:layout_marginTop="20dp"
+            android:hint="请输入学号"
+            android:text="@={loginViewModel.stuId}"
+            android:textColorHint="@color/colorLoginTextHint"
+            android:textSize="16sp" />
+
+        <EditText
+            style="@style/login_view_style"
+            android:layout_marginTop="10dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:text="@={loginViewModel.password}"
+            android:textColorHint="@color/colorLoginTextHint"
+            android:textSize="16sp" />
+
+        <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="52dp"
+            android:checked="@={loginViewModel.autoLogin}"
+            android:text="自动登录"
+            android:textColor="@color/colorBasicText"
+            android:textSize="15sp" />
+
+        <Button
+            style="@style/login_view_style"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_button"
+            android:onClick="@{()->loginViewModel.login()}"
+            android:text="登录"
+            android:textColor="@color/colorPureWhite"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </layout>

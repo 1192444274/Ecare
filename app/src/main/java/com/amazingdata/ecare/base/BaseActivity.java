@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.amazingdata.ecare.utils.MaterialDialogUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -77,6 +78,21 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVie
 
     public void initData() {
 
+    }
+
+    public void showDialog(String title) {
+        if (dialog != null) {
+            dialog.show();
+        } else {
+            MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true);
+            dialog = builder.show();
+        }
+    }
+
+    public void dismissDialog() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
     }
 
     /**
