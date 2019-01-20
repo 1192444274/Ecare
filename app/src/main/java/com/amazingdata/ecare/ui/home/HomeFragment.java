@@ -11,10 +11,8 @@ import android.widget.ImageView;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
-import com.amazingdata.ecare.base.DialogListener;
 import com.amazingdata.ecare.databinding.FragmentHomeBinding;
 import com.amazingdata.ecare.entity.Notice;
-import com.amazingdata.ecare.ui.MainActivity;
 import com.amazingdata.ecare.ui.notice.NoticeDetailActivity;
 import com.amazingdata.ecare.utils.Constant;
 import com.bumptech.glide.Glide;
@@ -33,8 +31,10 @@ import io.reactivex.schedulers.Schedulers;
  * @author Xiong
  * @date 2019/1/18 - 14:24
  */
+// Home主页Fragment
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> {
 
+    // 保存图片数据的类
     private List<Notice> datas;
 
     @Override
@@ -86,12 +86,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             public void loadBanner(XBanner banner, Object model, View view, int position) {
                 Glide.with(getActivity())
                         .load((String) model)
-                        .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher))
-                        .apply(new RequestOptions().error(R.mipmap.ic_launcher_round))
+                        .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher)) // 未显示的占位符
+                        .apply(new RequestOptions().error(R.mipmap.ic_launcher_round)) // 图片获取失败的占位符
                         .into((ImageView) view);
             }
         });
-
     }
-
 }

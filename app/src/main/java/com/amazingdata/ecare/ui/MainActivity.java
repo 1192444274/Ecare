@@ -25,8 +25,10 @@ import com.amazingdata.ecare.ui.record.RecordFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+// 主Activity
 public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewModel> {
 
+    // 存储Fragments的List
     private List<Fragment> mFragments;
 
     @Override
@@ -116,6 +118,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
         });
     }
 
+    // 初始化toolBar
     private void initToolBar() {
         binding.includetoolbar.toolbarLeft.setImageResource(R.mipmap.personal);
         binding.includetoolbar.toolbarLeft.setOnClickListener(new View.OnClickListener() {

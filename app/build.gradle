@@ -59,4 +59,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
     // XBanner
     api rootProject.ext.dependencies["XBanner"]
+    // immersionbar
+    api rootProject.ext.dependencies["immersionbar"]
+    // RoundImage
+    api rootProject.ext.dependencies["RoundImage"]
 }

@@ -57,8 +57,12 @@ ext {
             // Google AAC
             "lifecycle-extensions"    : "android.arch.lifecycle:extensions:1.1.1",
             "lifecycle-compiler"      : "android.arch.lifecycle:compiler:1.1.1",
-            // XBanner
-            "XBanner"                 : "com.xhb:xbanner:1.5.1"
+            // XBanner轮播框架
+            "XBanner"                 : "com.xhb:xbanner:1.5.1",
+            // 沉浸式状态栏解决方案
+            "immersionbar"            : "com.gyf.immersionbar:immersionbar:2.3.2",
+            // RoundImage
+            "RoundImage"              : "com.makeramen:roundedimageview:2.3.0"
     ]
 }
 

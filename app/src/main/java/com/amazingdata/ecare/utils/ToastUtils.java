@@ -19,8 +19,8 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by goldze on 2017/5/14.
- * 吐司工具类
  */
+// 偷得吐司工具类
 public final class ToastUtils {
 
     private static final int DEFAULT_COLOR = 0x12000000;
