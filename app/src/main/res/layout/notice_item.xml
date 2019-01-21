@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.amazingdata.ecare.utils.DateUtils" />
+
+        <variable
+            name="noticeItem"
+            type="com.amazingdata.ecare.entity.Notice" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/colorPureWhite"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/noticeitem_title"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/noticeitem_content"
+                android:layout_marginBottom="5dp"
+                android:singleLine="true"
+                android:text="@{noticeItem.title}"
+                android:textColor="@color/colorTextBitDeep"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/noticeitem_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/noticeitem_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@+id/noticeitem_title"
+                android:text="@{DateUtils.getDate(noticeItem.time)}"
+                android:textColor="@color/colorBasicText"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/noticeitem_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@{noticeItem.content}"
+                android:textColor="@color/colorBasicText"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

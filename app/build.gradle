@@ -29,6 +29,7 @@ dependencies {
     api rootProject.ext.support["appcompat-v7"]
     api rootProject.ext.support["recyclerview-v7"]
     api rootProject.ext.support["design"]
+    api rootProject.ext.support["cardview-v7"]
     //rxjava
     api rootProject.ext.dependencies.rxjava
     api rootProject.ext.dependencies.rxandroid

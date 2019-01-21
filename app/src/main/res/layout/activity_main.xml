@@ -47,7 +47,7 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             android:textSize="16sp"
-            app:itemTextColor="@color/navigation_menu_item_color"
+            app:itemTextColor="@color/navigation_menuitem_colorselector"
             app:menu="@menu/draw_menu" />
 
     </android.support.v4.widget.DrawerLayout>

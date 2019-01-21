@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.view.View" />
 
         <variable
             name="appointViewModel"
@@ -9,18 +12,235 @@
 
     </data>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="预约"
-            android:textColor="@color/colorBasicText"
-            android:textSize="15sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNoticeListBack"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/colorAppointHintBack"
+                android:gravity="center"
+                android:text="@string/appointFragmentHint"
+                android:textColor="@color/colorAppointHintText"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.CardView
+                style="@style/appoint_fragment_cardview_style"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25dp">
+
+                    <ImageView
+                        android:id="@+id/appoint_current"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="20dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/appoint_current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/appoint_current"
+                        android:text="当前预约"
+                        android:textColor="@color/colorTextBitDeep"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/appoint_current"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/appoint_time"
+                            style="@style/appoint_fragment_textview_style"
+                            android:text="时间："
+                            android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
+
+                        <TextView
+                            android:id="@+id/appoint_number"
+                            style="@style/appoint_fragment_textview_style"
+                            android:text="预约号："
+                            android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
+
+                        <TextView
+                            android:id="@+id/appoint_dept"
+                            style="@style/appoint_fragment_textview_style"
+                            android:text="科室："
+                            android:visibility="@{appointViewModel.isSpecial.get() ? View.VISIBLE : View.INVISIBLE}" />
+
+                        <TextView
+                            android:id="@+id/appoint_pos"
+                            style="@style/appoint_fragment_textview_style"
+                            android:text="地点："
+                            android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/appoint_cancel"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:background="@mipmap/appoint_back"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:onClick="@{()->appointViewModel.cancelAppoint()}"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="8dp"
+                        android:text="取消\n预约"
+                        android:textColor="@color/colorAppointBrown"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/appoint_fragment_cardview_style"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/appoint_need" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="我要预约"
+                            android:textColor="@color/colorTextBitDeep"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="12dp"
+                            android:text="提前5天开放预约" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="科室："
+                            android:textColor="@color/colorTextBitDeep"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="请选择科室"
+                            android:textColor="@color/colorDipGreen"
+                            android:textColorHint="@color/colorAppointHintText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="时间："
+                            android:textColor="@color/colorTextBitDeep"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="请先选择科室"
+                            android:textColor="@color/colorDipGreen"
+                            android:textColorHint="@color/colorAppointHintText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp">
+
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/appoint_radiobtn_selector"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="挂号预约"
+                            android:textColor="@color/appoint_colorselector"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/login_button"
+                            android:text="确认预约"
+                            android:textColor="@color/colorPureWhite"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </layout>

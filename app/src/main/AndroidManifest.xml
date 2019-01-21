@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.notice.NoticeDetailActivity"></activity>
+        <activity android:name=".ui.notice.NoticeDetailActivity" />
+        <activity android:name=".ui.notice.NoticeListActivity"></activity>
     </application>
 
 </manifest>

@@ -9,4 +9,9 @@
     <color name="colorTextBitDeep">#2c2c2c</color>
     <color name="colorTextBitLight">#802c2c2c</color>
     <color name="colorLoginTextHint">#d2d2d2</color>
+    <color name="colorNoticeListBack">#f7f7f7</color>
+    <color name="colorAppointHintBack">#dbf3f0</color>
+    <color name="colorAppointHintText">#b3b3b3</color>
+    <color name="colorAppointBrown">#f97f4c</color>
+    <color name="colorDipGreen">#388888</color>
 </resources>

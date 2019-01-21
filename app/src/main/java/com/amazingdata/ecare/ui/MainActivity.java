@@ -19,6 +19,7 @@ import com.amazingdata.ecare.databinding.ActivityMainBinding;
 import com.amazingdata.ecare.ui.appoint.AppointFragment;
 import com.amazingdata.ecare.ui.drugstore.DrugStoreFragment;
 import com.amazingdata.ecare.ui.home.HomeFragment;
+import com.amazingdata.ecare.ui.notice.NoticeListActivity;
 import com.amazingdata.ecare.ui.order.OrderFragment;
 import com.amazingdata.ecare.ui.record.RecordFragment;
 
@@ -54,7 +55,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
         mFragments.add(new OrderFragment());
         mFragments.add(new RecordFragment());
 
-        //默认选中第一个
+        //默认选中首页
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.main_frame, mFragments.get(2));
         transaction.commitAllowingStateLoss();
@@ -66,23 +67,30 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 if (checkedId != R.id.bottombar_rb_home) {
                     binding.bottombar.bottombarIvHome.setImageResource(R.mipmap.home);
+                    binding.includetoolbar.toolbarRight.setVisibility(View.INVISIBLE);
                     switch (checkedId) {
                         case R.id.bottombar_rb_appoint:
                             transaction.replace(R.id.main_frame, mFragments.get(0));
+                            binding.includetoolbar.toolbarText.setText("预约");
                             break;
                         case R.id.bottombar_rb_drugstore:
                             transaction.replace(R.id.main_frame, mFragments.get(1));
+                            binding.includetoolbar.toolbarText.setText("药房");
                             break;
                         case R.id.bottombar_rb_order:
                             transaction.replace(R.id.main_frame, mFragments.get(3));
+                            binding.includetoolbar.toolbarText.setText("订单");
                             break;
                         case R.id.bottombar_rb_record:
                             transaction.replace(R.id.main_frame, mFragments.get(4));
+                            binding.includetoolbar.toolbarText.setText("病历");
                             break;
                     }
                 } else {
+                    binding.includetoolbar.toolbarRight.setVisibility(View.VISIBLE);
                     binding.bottombar.bottombarIvHome.setImageResource(R.mipmap.home_click);
                     transaction.replace(R.id.main_frame, mFragments.get(2));
+                    binding.includetoolbar.toolbarText.setText("首页");
                 }
                 transaction.commitAllowingStateLoss();
             }
@@ -120,11 +128,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     // 初始化toolBar
     private void initToolBar() {
+        binding.includetoolbar.toolbarText.setText("首页");
         binding.includetoolbar.toolbarLeft.setImageResource(R.mipmap.personal);
         binding.includetoolbar.toolbarLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.mainDrawer.openDrawer(Gravity.LEFT);
+            }
+        });
+        binding.includetoolbar.toolbarRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(NoticeListActivity.class);
             }
         });
     }

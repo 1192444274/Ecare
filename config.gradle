@@ -25,6 +25,7 @@ ext {
             'design'                  : "com.android.support:design:${versions["support-version"]}",
             'animated-vector-drawable': "com.android.support:animated-vector-drawable:${versions["support-version"]}",
             'junit'                   : "junit:junit:${versions["junit-version"]}",
+            'cardview-v7'             : "com.android.support:cardview-v7:${versions["support-version"]}",
     ]
     //依赖第三方配置
     dependencies = [
