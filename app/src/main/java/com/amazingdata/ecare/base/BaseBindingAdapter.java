@@ -14,7 +14,7 @@ import android.view.ViewGroup;
  * @author Xiong
  * @date 2019/1/21 - 11:35
  */
-// 偷来的RecycleViewAdapter基类
+// 偷来的RecycleViewAdapter基类(DataBinding版)
 public abstract class BaseBindingAdapter<M, B extends ViewDataBinding> extends RecyclerView.Adapter {
 
     // 上下文对象

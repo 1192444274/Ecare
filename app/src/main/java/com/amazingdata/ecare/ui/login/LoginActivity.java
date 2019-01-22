@@ -13,7 +13,7 @@ import com.amazingdata.ecare.utils.Constant;
 import com.amazingdata.ecare.utils.ToastUtils;
 import com.gyf.barlibrary.ImmersionBar;
 
-// 登录Activity
+// 登录页面
 public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> {
 
     @Override

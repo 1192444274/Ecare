@@ -13,10 +13,11 @@ import java.util.Date;
  * @date 2019/1/19 - 11:25
  */
 public class Notice extends SimpleBannerInfo implements Parcelable, Serializable {
-    private String title;
-    private Date time;
-    private String content;
-    private String iconUrl;
+
+    private String title; // 公告标题
+    private Date time; // 公告时间,精确到年月日
+    private String content; // 公告内容
+    private String iconUrl; // 公告图标IconUrl,对应Home主页的四个主公告
 
 
     protected Notice(Parcel in) {

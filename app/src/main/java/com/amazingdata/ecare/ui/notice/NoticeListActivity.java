@@ -11,6 +11,7 @@ import com.amazingdata.ecare.databinding.ActivityNoticelistBinding;
 import com.amazingdata.ecare.entity.Notice;
 import com.amazingdata.ecare.utils.Constant;
 
+// 公告列表页面
 public class NoticeListActivity extends BaseActivity<ActivityNoticelistBinding, NoticeListViewModel> {
 
     @Override

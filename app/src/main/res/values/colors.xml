@@ -14,4 +14,5 @@
     <color name="colorAppointHintText">#b3b3b3</color>
     <color name="colorAppointBrown">#f97f4c</color>
     <color name="colorDipGreen">#388888</color>
+    <color name="colorGrayDeep">#b3b3b3</color>
 </resources>

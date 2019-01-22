@@ -25,6 +25,7 @@ import io.reactivex.schedulers.Schedulers;
  * @author Xiong
  * @date 2019/1/18 - 21:15
  */
+// LoginActivity 的ViewModel
 public class LoginViewModel extends BaseViewModel {
 
     // 学号的被观察者

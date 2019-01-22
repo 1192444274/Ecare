@@ -6,6 +6,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.amazingdata.ecare.R" />
+
         <variable
             name="appointViewModel"
             type="com.amazingdata.ecare.ui.appoint.AppointViewModel" />
@@ -38,13 +40,13 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp">
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/appoint_current"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
                         android:scaleType="centerCrop"
                         android:src="@mipmap/appoint_current" />
@@ -69,25 +71,25 @@
                         <TextView
                             android:id="@+id/appoint_time"
                             style="@style/appoint_fragment_textview_style"
-                            android:text="时间："
+                            android:text="@{appointViewModel.currentData.get().getTime()}"
                             android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
 
                         <TextView
                             android:id="@+id/appoint_number"
                             style="@style/appoint_fragment_textview_style"
-                            android:text="预约号："
+                            android:text="@{appointViewModel.currentData.get().getNumber()}"
                             android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
 
                         <TextView
                             android:id="@+id/appoint_dept"
                             style="@style/appoint_fragment_textview_style"
-                            android:text="科室："
+                            android:text="@{appointViewModel.currentData.get().getDept()}"
                             android:visibility="@{appointViewModel.isSpecial.get() ? View.VISIBLE : View.INVISIBLE}" />
 
                         <TextView
                             android:id="@+id/appoint_pos"
                             style="@style/appoint_fragment_textview_style"
-                            android:text="地点："
+                            android:text="@{appointViewModel.currentData.get().getPos()}"
                             android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
 
                     </LinearLayout>
@@ -101,13 +103,47 @@
                         android:background="@mipmap/appoint_back"
                         android:clickable="true"
                         android:gravity="center"
-                        android:lines="2"
                         android:onClick="@{()->appointViewModel.cancelAppoint()}"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
                         android:text="取消\n预约"
                         android:textColor="@color/colorAppointBrown"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:visibility="@{appointViewModel.isNormal.get() ? View.VISIBLE : View.INVISIBLE}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="当前暂无预约"
+                        android:textColor="@color/colorBasicText"
+                        android:textSize="20sp"
+                        android:visibility="@{appointViewModel.isNormal.get() ? View.INVISIBLE : View.VISIBLE}" />
+
+                    <RadioGroup
+                        android:id="@+id/appoint_rg_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:checkedButton="@{appointViewModel.isRegister.get() ? R.id.appoint_rb_register : R.id.appoint_rb_bodyexam}"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/appoint_rb_register"
+                            style="@style/appoint_fragment_radioButton_style"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"
+                            android:text="挂\n号" />
+
+                        <RadioButton
+                            android:id="@+id/appoint_rb_bodyexam"
+                            style="@style/appoint_fragment_radioButton_style"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="center"
+                            android:text="体\n检" />
+
+                    </RadioGroup>
 
                 </RelativeLayout>
 
@@ -210,26 +246,26 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="20dp">
-
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_marginRight="25dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/appoint_radiobtn_selector"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="挂号预约"
-                            android:textColor="@color/appoint_colorselector"
-                            android:textSize="15sp" />
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center">
 
                         <Button
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="25dp"
+                            android:background="@drawable/appoint_button"
+                            android:gravity="center"
+                            android:onClick="@{()->appointViewModel.bodyExamAppoint()}"
+                            android:text="体检预约"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
                             android:layout_marginLeft="25dp"
-                            android:layout_weight="1"
                             android:background="@drawable/login_button"
+                            android:onClick="@{()->appointViewModel.checkAppoint()}"
                             android:text="确认预约"
                             android:textColor="@color/colorPureWhite"
                             android:textSize="14sp" />

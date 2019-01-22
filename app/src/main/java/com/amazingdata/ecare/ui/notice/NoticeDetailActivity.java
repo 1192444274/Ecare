@@ -8,6 +8,7 @@ import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseActivity;
 import com.amazingdata.ecare.databinding.ActivityNoticedetailBinding;
 
+// 公告详情页面
 public class NoticeDetailActivity extends BaseActivity<ActivityNoticedetailBinding, NoticeDetailViewModel> {
 
     @Override

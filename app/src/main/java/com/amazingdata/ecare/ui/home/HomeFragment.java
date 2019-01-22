@@ -30,7 +30,7 @@ import io.reactivex.schedulers.Schedulers;
  * @author Xiong
  * @date 2019/1/18 - 14:24
  */
-// Home主页Fragment
+// Home页面
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> {
 
     @Override
