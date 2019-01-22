@@ -14,6 +14,7 @@ import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 import com.amazingdata.ecare.R;
+import com.amazingdata.ecare.base.DialogListenerUtils;
 
 import java.util.List;
 
@@ -22,6 +23,17 @@ import java.util.List;
  */
 // 偷的Dialog工具类
 public class MaterialDialogUtils {
+
+    public static DialogListenerUtils.BasicDialogClickListener mBasicDialogClickListener;
+    public static DialogListenerUtils.SingleListDialogPickListener mSingleListDialogPickListener;
+
+    public static void setBasicDialogClickListener(DialogListenerUtils.BasicDialogClickListener BasicDialogClickListener) {
+        mBasicDialogClickListener = BasicDialogClickListener;
+    }
+
+    public static void setSingleListDialogPickListener(DialogListenerUtils.SingleListDialogPickListener singleListDialogPickListener) {
+        MaterialDialogUtils.mSingleListDialogPickListener = singleListDialogPickListener;
+    }
 
     public void showThemed(Context context, String
             title, String content) {
@@ -81,6 +93,7 @@ public class MaterialDialogUtils {
     public static MaterialDialog.Builder showIndeterminateProgressDialog(Context context, String content, boolean horizontal) {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(content)
+                .titleGravity(GravityEnum.CENTER)
                 .progress(true, 0)
                 .progressIndeterminateStyle(horizontal)
                 .canceledOnTouchOutside(false)
@@ -108,12 +121,25 @@ public class MaterialDialogUtils {
      * @return MaterialDialog.Builder
      */
     public static MaterialDialog.Builder showBasicDialog(final Context context, String
-            content) {
+            content, String positiveText, String negativeText) {
 
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(content)
-                .positiveText("确定")
-                .negativeText("取消")
+                .titleGravity(GravityEnum.CENTER)
+                .positiveText(positiveText)
+                .negativeText(negativeText)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        mBasicDialogClickListener.onPositive();
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        mBasicDialogClickListener.onNegative();
+                    }
+                })
 //                .btnStackedGravity(GravityEnum.END)         //按钮排列位置
 //                .stackingBehavior(StackingBehavior.ALWAYS)  //按钮排列方式
 //                .iconRes(R.mipmap.ic_launcher)
@@ -249,7 +275,7 @@ public class MaterialDialogUtils {
      * @return MaterialDialog.Builder
      */
     public static MaterialDialog.Builder showSingleListDialog(final Context context, String title, List
-            content) {
+            content, String pickHint) {
 
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(title)
@@ -258,12 +284,11 @@ public class MaterialDialogUtils {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which,
                                                CharSequence text) {
-
-
-                        return true; // allow selection
+                        mSingleListDialogPickListener.pick((String) text);
+                        return false; // allow selection
                     }
                 })
-                .positiveText("选择");
+                .positiveText(pickHint);
 
         return builder;
     }

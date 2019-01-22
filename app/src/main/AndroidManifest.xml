@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.notice.NoticeDetailActivity" />
-        <activity android:name=".ui.notice.NoticeListActivity"></activity>
+        <activity android:name=".ui.notice.NoticeListActivity" />
+        <activity android:name=".ui.picktime.PickTimeActivity"></activity>
     </application>
 
 </manifest>

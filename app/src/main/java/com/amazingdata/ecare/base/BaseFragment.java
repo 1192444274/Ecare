@@ -30,8 +30,10 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
     protected VM viewModel;
     // 绑定的viewModel id (BR中)
     private int viewModelId;
-    // MaterialDialog 对象
-    private MaterialDialog dialog;
+    // progressDialog 对象
+    private MaterialDialog progressDialog;
+    // basicDialog 对象
+    private MaterialDialog basicDialog;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -80,20 +82,33 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         binding.unbind();
     }
 
-    // 显示耗时Dialog
-    public void showDialog(String title) {
-        if (dialog != null) {
-            dialog.show();
+    // 显示耗时progressDialog
+    public void showProgressDialog(String title) {
+        if (progressDialog != null) {
+            progressDialog.show();
         } else {
             MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(getActivity(), title, true);
-            dialog = builder.show();
+            progressDialog = builder.show();
         }
     }
 
-    // 移除耗时Dialog
-    public void dismissDialog() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
+    // 移除progressDialog
+    public void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing())
+            progressDialog.dismiss();
+    }
+
+    public MaterialDialog getBasicDialog() {
+        return basicDialog;
+    }
+
+    // 显示basicDialog
+    public void showBasicDialog(String content, String positiveText, String negativeText) {
+        if (basicDialog != null) {
+            basicDialog.show();
+        } else {
+            MaterialDialog.Builder builder = MaterialDialogUtils.showBasicDialog(getActivity(), content, positiveText, negativeText);
+            basicDialog = builder.show();
         }
     }
 

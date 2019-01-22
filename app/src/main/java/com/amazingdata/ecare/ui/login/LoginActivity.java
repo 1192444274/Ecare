@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseActivity;
-import com.amazingdata.ecare.base.DialogListener;
+import com.amazingdata.ecare.base.DialogListenerUtils;
 import com.amazingdata.ecare.databinding.ActivityLoginBinding;
 import com.amazingdata.ecare.ui.MainActivity;
 import com.amazingdata.ecare.utils.Constant;
@@ -45,20 +45,21 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     @Override
     public void initData() {
         // 设置监听的回调,响应登录
-        viewModel.setmDialogListener(new DialogListener() {
+        viewModel.setmDialogListener(new DialogListenerUtils.ProgressDialogListener() {
             @Override
-            public void show_Dialog(String title) {
+            public void show(String content) {
                 // 显示Dialog
-                showDialog(title);
+                showProgressDialog(content);
             }
 
             @Override
-            public void dismiss_Dialog(boolean isCheck, String stuId) {
+            public void dissmiss() {
                 // 移除Dialog
-                dismissDialog();
-                if (isCheck) { // 当验证正确,携带用户名进入MainActivity
+                dismissProgressDialog();
+                // 当验证正确,携带用户名进入MainActivity
+                if (viewModel.checkLogin(viewModel.stuId.get(), viewModel.password.get(), viewModel.autoLogin.get())) {
                     Bundle bundle = new Bundle();
-                    bundle.putString(Constant.BUNDLE_KEY, stuId);
+                    bundle.putString(Constant.BUNDLE_KEY, viewModel.stuId.get());
                     startActivity(MainActivity.class, bundle);
                     finish();
                 } else // 验证失败Toast提示

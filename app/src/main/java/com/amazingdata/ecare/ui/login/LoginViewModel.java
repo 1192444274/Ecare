@@ -5,11 +5,9 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.amazingdata.ecare.base.BaseViewModel;
-import com.amazingdata.ecare.base.DialogListener;
+import com.amazingdata.ecare.base.DialogListenerUtils;
 import com.amazingdata.ecare.utils.Constant;
 import com.amazingdata.ecare.utils.SPUtils;
 import com.amazingdata.ecare.utils.ToastUtils;
@@ -35,9 +33,9 @@ public class LoginViewModel extends BaseViewModel {
     // 自动登录的被观察者
     public final ObservableBoolean autoLogin = new ObservableBoolean(false);
     // Dialog的监听
-    private DialogListener mDialogListener;
+    private DialogListenerUtils.ProgressDialogListener mDialogListener;
 
-    public void setmDialogListener(DialogListener mDialogListener) {
+    public void setmDialogListener(DialogListenerUtils.ProgressDialogListener mDialogListener) {
         this.mDialogListener = mDialogListener;
     }
 
@@ -53,7 +51,7 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     // 初始化账号密码,从SharedPreferences获取数据
-    public void init() {
+    protected void init() {
         SPUtils instance = SPUtils.getInstance(Constant.SHARED_PREFERENCE_KEY);
         boolean autoLogin = instance.getBoolean("autoLogin", false);
         String stuId = instance.getString("stuId", "");
@@ -77,7 +75,6 @@ public class LoginViewModel extends BaseViewModel {
         // 获取数据
         final String stu_Id = stuId.get();
         final String passWord = password.get();
-        final boolean auto_Login = autoLogin.get();
 
         // 本地校验
         if (TextUtils.isEmpty(stu_Id)) {
@@ -98,20 +95,20 @@ public class LoginViewModel extends BaseViewModel {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
                         // 显示Dialog
-                        mDialogListener.show_Dialog("登录中,请稍等...");
+                        mDialogListener.show("登录中,请稍等...");
                     }
                 })
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
                         // 移除Dialog
-                        mDialogListener.dismiss_Dialog(checkLogin(stu_Id, passWord, auto_Login), stu_Id);
+                        mDialogListener.dissmiss();
                     }
                 });
     }
 
     // 远程验证方法
-    private boolean checkLogin(String stuId, String password, boolean autoLogin) {
+    protected boolean checkLogin(String stuId, String password, boolean autoLogin) {
         // 验证成功将当前账号导入SharedPreferences
         SPUtils instance = SPUtils.getInstance(Constant.SHARED_PREFERENCE_KEY);
         instance.put("stuId", stuId);
