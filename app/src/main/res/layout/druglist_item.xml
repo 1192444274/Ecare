@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xbind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.amazingdata.ecare.R" />
+
+        <variable
+            name="drugInfo"
+            type="com.amazingdata.ecare.entity.DrugInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="75dp"
+        android:layout_height="110dp"
+        android:background="@color/colorPureWhite"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/druglist_item_back"
+            android:scaleType="center"
+            xbind:errorRes="@{R.mipmap.img_loaderror}"
+            xbind:imageUrl="@{drugInfo.iconUrl}"
+            xbind:placeHolderRes="@{R.mipmap.img_placeholder}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{drugInfo.drugName}"
+            android:textColor="@color/colorBasicText"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{drugInfo.simpleDesc}"
+            android:textColor="@color/colorGrayDeep"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</layout>

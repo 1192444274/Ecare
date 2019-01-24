@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".ui.notice.NoticeDetailActivity" />
         <activity android:name=".ui.notice.NoticeListActivity" />
-        <activity android:name=".ui.picktime.PickTimeActivity"></activity>
+        <activity android:name=".ui.timechooser.TimeChooserActivity"></activity>
     </application>
 
 </manifest>

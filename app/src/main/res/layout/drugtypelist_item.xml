@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="drugType"
+            type="String" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/drugtypelist_item_tv"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/drugtypelist_item_uncheck"
+        android:gravity="center"
+        android:text="@={drugType}"
+        android:textColor="@color/colorGrayLight"
+        android:textSize="15sp">
+
+    </TextView>
+</layout>

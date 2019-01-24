@@ -6,7 +6,7 @@ import android.view.View;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseActivity;
-import com.amazingdata.ecare.base.ListItemListener;
+import com.amazingdata.ecare.base.VMConnectedListenerUtils;
 import com.amazingdata.ecare.databinding.ActivityNoticelistBinding;
 import com.amazingdata.ecare.entity.Notice;
 import com.amazingdata.ecare.utils.Constant;
@@ -35,7 +35,7 @@ public class NoticeListActivity extends BaseActivity<ActivityNoticelistBinding, 
             }
         });
         viewModel.initAdapter(this);
-        viewModel.setListItemListener(new ListItemListener<Notice>() {
+        viewModel.setListItemListener(new VMConnectedListenerUtils.ListItemListener<Notice>() {
             @Override
             public void onItemClick(Notice notice) {
                 Bundle bundle = new Bundle();

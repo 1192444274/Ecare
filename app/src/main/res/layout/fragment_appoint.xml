@@ -240,6 +240,7 @@
                             android:editable="false"
                             android:gravity="center"
                             android:hint="请先选择科室"
+                            android:onClick="@{()->appointViewModel.pickTime(true)}"
                             android:text="@{appointViewModel.time}"
                             android:textColor="@color/colorDipGreen"
                             android:textColorHint="@color/colorAppointHintText" />
@@ -260,7 +261,7 @@
                             android:layout_marginRight="25dp"
                             android:background="@drawable/appoint_button"
                             android:gravity="center"
-                            android:onClick="@{()->appointViewModel.bodyExamAppoint()}"
+                            android:onClick="@{()->appointViewModel.pickTime(false)}"
                             android:text="体检预约"
                             android:textColor="@color/colorPrimary"
                             android:textSize="14sp" />

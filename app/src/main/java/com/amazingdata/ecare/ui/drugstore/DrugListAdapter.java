@@ -1,4 +1,4 @@
-package com.amazingdata.ecare.ui.notice;
+package com.amazingdata.ecare.ui.drugstore;
 
 import android.content.Context;
 import android.databinding.ObservableArrayList;
@@ -7,22 +7,22 @@ import android.databinding.ViewDataBinding;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseBindingRecycleViewAdapter;
-import com.amazingdata.ecare.databinding.NoticeItemBinding;
-import com.amazingdata.ecare.entity.Notice;
+import com.amazingdata.ecare.databinding.DruglistItemBinding;
+import com.amazingdata.ecare.entity.DrugInfo;
 
 /**
  * @author Xiong
- * @date 2019/1/21 - 11:39
+ * @date 2019/1/24 - 16:20
  */
-public class NoticeListAdapter extends BaseBindingRecycleViewAdapter<Notice, NoticeItemBinding, ViewDataBinding> {
+public class DrugListAdapter extends BaseBindingRecycleViewAdapter<DrugInfo, DruglistItemBinding, ViewDataBinding> {
 
-    public NoticeListAdapter(Context mContext, ObservableArrayList<Notice> mItems, int mode) {
+    public DrugListAdapter(Context mContext, ObservableArrayList<DrugInfo> mItems, int mode) {
         super(mContext, mItems, mode);
     }
 
     @Override
     protected int getNormalLayoutResId() {
-        return R.layout.notice_item;
+        return R.layout.druglist_item;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class NoticeListAdapter extends BaseBindingRecycleViewAdapter<Notice, Not
     }
 
     @Override
-    protected void onBindNormalItem(NoticeItemBinding binding, Notice item, int position) {
-        binding.setVariable(BR.noticeItem, item);
+    protected void onBindNormalItem(DruglistItemBinding binding, DrugInfo item, int position) {
+        binding.setVariable(BR.drugInfo, item);
         binding.executePendingBindings();
     }
 

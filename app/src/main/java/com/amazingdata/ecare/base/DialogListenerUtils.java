@@ -16,6 +16,13 @@ public class DialogListenerUtils {
         void dissmiss();
     }
 
+    // 假进度对话框的监听器接口(携带状态数据)
+    public interface ProgressDialogWithModeListener {
+        void show(String content, int mode);
+
+        void dissmiss(int mode);
+    }
+
     // 基本对话框(带内容和两个选项)的监听器接口
     public interface BasicDialogListener {
         void show(String content, String positiveText, String negativeText);

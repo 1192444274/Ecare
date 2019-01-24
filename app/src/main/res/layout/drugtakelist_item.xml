@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xbind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.amazingdata.ecare.utils.DateUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.amazingdata.ecare.R" />
+
+        <variable
+            name="drugTaking"
+            type="com.amazingdata.ecare.entity.DrugTaking" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:clickable="@{drugTaking.mode == 1}"
+        xbind:backgroundResId="@{drugTaking.mode == 1 ? R.drawable.drugtakelist_item_undone : R.drawable.drugtakelist_item_done}">
+
+        <ImageView
+            android:id="@+id/drugtakelist_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:visibility="@{drugTaking.mode == 1 ? View.VISIBLE : View.INVISIBLE}"
+            xbind:errorRes="@{R.mipmap.img_loaderror}"
+            xbind:imageUrl="@{drugTaking.QRcodeUrl}"
+            xbind:placeHolderRes="@{R.mipmap.img_placeholder}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="已取"
+            android:textColor="@color/colorGrayDeep"
+            android:textSize="18sp"
+            android:visibility="@{drugTaking.mode == 1 ? View.INVISIBLE : View.VISIBLE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/drugtakelist_iv"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取药时间: "
+                android:textColor="@{drugTaking.mode == 1 ? R.color.colorTextBitDeep : R.color.colorGrayDeep}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{DateUtils.getTimeMinute(drugTaking.time)}"
+                android:textColor="@{drugTaking.mode == 1 ? R.color.colorTextBitDeep : R.color.colorGrayDeep}"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

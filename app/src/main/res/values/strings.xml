@@ -10,4 +10,7 @@
     <string name="customactivityoncrash_error_activity_error_details_copied">复制日志</string>
     <string name="customactivityoncrash_error_activity_error_details_clipboard_label">错误信息</string>
     <string name="appointFragmentHint">不清楚挂什么科？快去智能诊疗描述一下病情</string>
+    <string name="pickTimeMoring">上午  (08: 00 - 11: 00)</string>
+    <string name="pickTimeAfternoon">下午  (13: 00 - 17: 00)</string>
+    <string name="drugUndoneHint">正在为你配药中,请稍等...</string>
 </resources>

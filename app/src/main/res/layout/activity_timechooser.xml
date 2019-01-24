@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="timeChooserViewModel"
+            type="com.amazingdata.ecare.ui.timechooser.TimeChooserViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includetoolbar"
+            layout="@layout/toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNoticeListBack">
+
+            <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPureWhite"
+                app:textColorNormal="@color/colorGrayLight"
+                app:textColorSelected="@color/colorBlackDip" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/register_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calendarView"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPureWhite"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:visibility="invisible"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:spanCount="4" />
+
+            <LinearLayout
+                android:id="@+id/bodyexam_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calendarView"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPureWhite"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingBottom="15dp"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="请选择体检时间段："
+                    android:textColor="@color/colorTextBitDeep"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/picktime_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/picktime_rb_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/pickTimeMoring"
+                        android:textColor="@color/activity_picktime_rbtextselector"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/picktime_rb_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/pickTimeAfternoon"
+                        android:textColor="@color/activity_picktime_rbtextselector"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="@{()->timeChooserViewModel.click()}"
+                android:text="选好了"
+                android:textColor="@color/colorPureWhite"
+                android:textSize="18sp">
+
+            </Button>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

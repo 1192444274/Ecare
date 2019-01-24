@@ -5,9 +5,9 @@ import android.content.Context;
 import android.databinding.ObservableArrayList;
 import android.support.annotation.NonNull;
 
-import com.amazingdata.ecare.base.BaseBindingAdapter;
+import com.amazingdata.ecare.base.BaseBindingRecycleViewAdapter;
 import com.amazingdata.ecare.base.BaseViewModel;
-import com.amazingdata.ecare.base.ListItemListener;
+import com.amazingdata.ecare.base.VMConnectedListenerUtils;
 import com.amazingdata.ecare.entity.Notice;
 
 import java.util.Date;
@@ -28,9 +28,9 @@ public class NoticeListViewModel extends BaseViewModel {
     // 公告列表的被观察者
     public ObservableArrayList<Notice> mDatas = new ObservableArrayList<>();
     // 监听器接口,View NoticeListActivity中回调
-    private ListItemListener mListItemListener;
+    private VMConnectedListenerUtils.ListItemListener mListItemListener;
 
-    public void setListItemListener(ListItemListener ListItemListener) {
+    public void setListItemListener(VMConnectedListenerUtils.ListItemListener ListItemListener) {
         this.mListItemListener = ListItemListener;
     }
 
@@ -40,7 +40,7 @@ public class NoticeListViewModel extends BaseViewModel {
 
     // 初始化Recycle Adapter适配器(从View视图传入context上下文)
     public void initAdapter(Context context) {
-        mAdapter = new NoticeListAdapter(context, mDatas);
+        mAdapter = new NoticeListAdapter(context, mDatas, 1);
         Observable.just(initData())
                 .observeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())
@@ -49,9 +49,9 @@ public class NoticeListViewModel extends BaseViewModel {
                     public void accept(Integer integer) throws Exception {
                         // 数据获取成功设置点击监听
                         if (integer == 0) {
-                            mAdapter.setItemClickListener(new BaseBindingAdapter.recycleViewItemClickListener<Notice>() {
+                            mAdapter.setOnItemClickListener(new BaseBindingRecycleViewAdapter.onItemClickListener<Notice>() {
                                 @Override
-                                public void onItemClick(Notice data) {
+                                public void click(Notice data) {
                                     mListItemListener.onItemClick(data);
                                 }
                             });

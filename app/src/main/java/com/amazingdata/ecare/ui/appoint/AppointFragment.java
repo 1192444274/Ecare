@@ -2,6 +2,7 @@ package com.amazingdata.ecare.ui.appoint;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -12,6 +13,8 @@ import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseFragment;
 import com.amazingdata.ecare.base.DialogListenerUtils;
 import com.amazingdata.ecare.databinding.FragmentAppointBinding;
+import com.amazingdata.ecare.ui.timechooser.TimeChooserActivity;
+import com.amazingdata.ecare.utils.Constant;
 import com.amazingdata.ecare.utils.MaterialDialogUtils;
 
 import java.util.List;
@@ -93,6 +96,17 @@ public class AppointFragment extends BaseFragment<FragmentAppointBinding, Appoin
             @Override
             public void pick(String item) {
                 viewModel.dept.set(item);
+            }
+        });
+
+        // 体检预约/挂号择时的回调监听
+        viewModel.setPickTimeModeListener(new AppointViewModel.PickTimeModeListener() {
+            @Override
+            public void PickRegister(boolean isRegister) {
+                Bundle bundle = new Bundle();
+                Log.e("PickRegister: ", isRegister + "");
+                bundle.putBoolean(Constant.BUNDLE_KEY, isRegister);
+                startActivity(TimeChooserActivity.class, bundle);
             }
         });
     }

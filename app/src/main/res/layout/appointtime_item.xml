@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.amazingdata.ecare.utils.DateUtils" />
+
+        <variable
+            name="appointTime"
+            type="com.amazingdata.ecare.entity.AppointTime" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/appointtimeitem"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/appointtimelist_cardview_uncheck"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/appointtime_selectediv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/appointtime_selected"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/appointtimeitem_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="示例"
+            android:textColor="@color/colorAppointTimeNormal"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/appointtimeitem_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appointtimeitem_mode"
+            android:layout_centerHorizontal="true"
+            android:text="@{DateUtils.getFormatTme(appointTime.time)}"
+            android:textColor="@color/colorAppointTimeNormal"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</layout>

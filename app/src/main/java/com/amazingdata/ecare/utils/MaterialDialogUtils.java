@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by goldze on 2017/5/10.
  */
-// 偷的Dialog工具类
+// 偷的Dialog辅助类
 public class MaterialDialogUtils {
 
     public static DialogListenerUtils.BasicDialogClickListener mBasicDialogClickListener;

@@ -112,6 +112,13 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVie
         }
     }
 
+    //刷新布局
+    public void refreshLayout() {
+        if (viewModel != null) {
+            binding.setVariable(viewModelId, viewModel);
+        }
+    }
+
     // 交由继承类重写
     public void initData() {
 

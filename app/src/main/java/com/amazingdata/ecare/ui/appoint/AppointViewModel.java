@@ -52,6 +52,16 @@ public class AppointViewModel extends BaseViewModel {
     public ObservableField<String> dept = new ObservableField<>("");
     // 当前预约时间的被观察者
     public ObservableField<String> time = new ObservableField<>("");
+    // 体检预约/挂号择时的监听
+    private PickTimeModeListener mPickTimeModeListener;
+
+    public void setPickTimeModeListener(PickTimeModeListener PickTimeModeListener) {
+        this.mPickTimeModeListener = PickTimeModeListener;
+    }
+
+    interface PickTimeModeListener {
+        void PickRegister(boolean isRegister);
+    }
 
     public void setSingleListDialogListener(DialogListenerUtils.SingleListDialogListener singleListDialogListener) {
         this.mSingleListDialogListener = singleListDialogListener;
@@ -157,9 +167,9 @@ public class AppointViewModel extends BaseViewModel {
                 });
     }
 
-    // 体检预约的点击事件
-    public void bodyExamAppoint() {
-        ToastUtils.showShort("体检预约...");
+    // 体检预约/挂号选时间的点击事件
+    public void pickTime(boolean isRegisterPick) {
+        mPickTimeModeListener.PickRegister(isRegisterPick);
     }
 
     // 确认预约的点击事件

@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
  * @author Xiong
  * @date 2019/1/17 - 22:39
  */
+// 偷来的Utils辅助类
 public final class Utils {
     @SuppressLint("StaticFieldLeak")
     private static Context context;

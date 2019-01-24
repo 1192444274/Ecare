@@ -15,4 +15,9 @@
     <color name="colorAppointBrown">#f97f4c</color>
     <color name="colorDipGreen">#388888</color>
     <color name="colorGrayDeep">#b3b3b3</color>
+    <color name="colorBlackDip">#333333</color>
+    <color name="colorGrayLight">#999999</color>
+    <color name="colorAppointTimeSelected">#f97f4c</color>
+    <color name="colorAppointTimeNormal">#666666</color>
+    <color name="colorAppointTimeDisable">#cccccc</color>
 </resources>
