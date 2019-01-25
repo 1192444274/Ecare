@@ -11,4 +11,5 @@ public class Constant {
     public static final String DATE_TO_STRING = "yyyy-MM-dd";
     public static final String TIME_TO_STRING = "yyyy-MM-dd HH:mm:ss";
     public static final String TIME_TO_STRING_MINUTE = "yyyy-MM-dd HH:mm";
+    public static final String TAG_PREFIX = "Ecare";
 }

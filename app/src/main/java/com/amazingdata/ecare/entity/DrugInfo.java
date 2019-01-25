@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @author Xiong
  * @date 2019/1/24 - 16:23
  */
+// 药品信息
 public class DrugInfo implements Parcelable, Serializable {
     private String drugName;
     private String drugType;

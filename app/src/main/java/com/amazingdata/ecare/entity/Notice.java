@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Xiong
  * @date 2019/1/19 - 11:25
  */
+// 公告信息
 public class Notice extends SimpleBannerInfo implements Parcelable, Serializable {
 
     private String title; // 公告标题

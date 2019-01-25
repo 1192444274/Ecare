@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
-import com.amazingdata.ecare.base.BaseBindingRecycleViewAdapter;
+import com.amazingdata.ecare.base.BaseBindingRVAdapter;
 import com.amazingdata.ecare.base.BaseFragment;
 import com.amazingdata.ecare.base.DialogListenerUtils;
 import com.amazingdata.ecare.databinding.FragmentDrugstoreBinding;
@@ -50,10 +50,10 @@ public class DrugStoreFragment extends BaseFragment<FragmentDrugstoreBinding, Dr
     // 初始化监听
     private void initListener() {
         // 为drugList设置点击监听
-        drugListAdapter.setOnItemClickListener(new BaseBindingRecycleViewAdapter.onItemClickListener<DrugInfo>() {
+        drugListAdapter.setOnItemClickListener(new BaseBindingRVAdapter.BaseBindingRVListener.onItemClickListener<DrugInfo>() {
             @Override
-            public void click(DrugInfo drugInfo) {
-                ToastUtils.showShort(drugInfo.getDrugName());
+            public void click(DrugInfo data) {
+                ToastUtils.showShort(data.getDrugName());
             }
         });
 
@@ -86,9 +86,9 @@ public class DrugStoreFragment extends BaseFragment<FragmentDrugstoreBinding, Dr
         viewModel.initDrugTypeList();
 
         // 为药品列表适配器设置选中头布局的监听
-        drugTypeAdapter.setOnHeaderCheckListener(new BaseBindingRecycleViewAdapter.onHeaderCheckListener() {
+        drugTypeAdapter.setOnHeaderSelectListener(new BaseBindingRVAdapter.BaseBindingRVListener.onHeaderSelectListener() {
             @Override
-            public void singleSelect() {
+            public void select() {
                 // 将取药RecycleView置为可见
                 binding.drugstoreRvTakedrug.setVisibility(View.VISIBLE);
                 // 将药品RecycleView置为不可见
@@ -98,9 +98,9 @@ public class DrugStoreFragment extends BaseFragment<FragmentDrugstoreBinding, Dr
             }
         });
 
-        drugTypeAdapter.setOnItemCheckListener(new BaseBindingRecycleViewAdapter.onItemCheckListener() {
+        drugTypeAdapter.setOnItemSelectListener(new BaseBindingRVAdapter.BaseBindingRVListener.onItemSelectListener<String>() {
             @Override
-            public void singleSelect(Object o) {
+            public void select(String data) {
                 // 将药品RecycleView置为可见
                 binding.drugstoreRvDruglist.setVisibility(View.VISIBLE);
                 // 将取药RecycleView置为不可见
@@ -114,7 +114,9 @@ public class DrugStoreFragment extends BaseFragment<FragmentDrugstoreBinding, Dr
     // 初始化adapter
     private void initAdapter() {
         // 设置将数据设置为ViewModel中的数据
-        drugTypeAdapter = new DrugTypeAdapter(getActivity(), viewModel.drugTypes, DrugTypeAdapter.MODE_WITH_HEADER_CHECK);
+        drugTypeAdapter = new DrugTypeAdapter(getActivity(), viewModel.drugTypes);
+        drugTypeAdapter.setCheckMode(DrugTypeAdapter.MODE_SINGLE_SELECT)
+                .setWithHeader(true);
         // recycleView 设置适配器
         binding.drugstoreRv.setAdapter(drugTypeAdapter);
         // 设置item间距
@@ -124,7 +126,8 @@ public class DrugStoreFragment extends BaseFragment<FragmentDrugstoreBinding, Dr
         binding.drugstoreRvTakedrug.setAdapter(takeDrugListAdapter);
         binding.drugstoreRvTakedrug.addItemDecoration(new LinearSpacesItemDecoration(20));
 
-        drugListAdapter = new DrugListAdapter(getActivity(), viewModel.drugInfos, DrugListAdapter.MODE_NORMAL_CLICK);
+        drugListAdapter = new DrugListAdapter(getActivity(), viewModel.drugInfos);
+        drugListAdapter.setWithFooter(false).setWithHeader(false);
         binding.drugstoreRvDruglist.setAdapter(drugListAdapter);
         binding.drugstoreRvDruglist.addItemDecoration(new GridSpacingItemDecoration(2, 20, true));
     }

@@ -1,4 +1,9 @@
 # Ecare
+## 2019 1.25
+#### 今天的效率不快不慢,又重写了BaseRecycleView,这是第三次重写
+#### 因为需要,将其改造为点击/选中 header/item/footer 2*3 6种模式
+#### 今天重构了使用BaseRecycleView的代码,基本上写完了OrderFragment的购物车模块
+#### 还把新加的代码完成了注释
 ## 2019 1.24
 #### 今天一天的效率十分的高,完善了两次昨天的BaseRecycleView
 #### 因为需要,又写了一个MultipleTypeRecycleViewAdapter——

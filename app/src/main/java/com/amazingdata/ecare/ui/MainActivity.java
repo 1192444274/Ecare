@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
                             break;
                         case R.id.bottombar_rb_order:
                             transaction.replace(R.id.main_frame, mFragments.get(3));
-                            binding.includetoolbar.toolbarText.setText("订单");
+                            binding.includetoolbar.toolbarText.setText("购物车");
                             break;
                         case R.id.bottombar_rb_record:
                             transaction.replace(R.id.main_frame, mFragments.get(4));

@@ -16,7 +16,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/appointtimelist_cardview_uncheck"
-        android:clickable="true">
+        android:clickable="false">
 
         <ImageView
             android:id="@+id/appointtime_selectediv"

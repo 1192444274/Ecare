@@ -10,6 +10,7 @@ import java.util.Date;
  * @author Xiong
  * @date 2019/1/24 - 13:59
  */
+// 取药信息
 public class DrugTaking implements Parcelable, Serializable {
     private int oderNum; // 订单号
     private int mode; // 0为未可取,1为未取,2为已取

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,18 +10,98 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fgorder_orderlist_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/fgorder_bottommanager_rl"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        <RelativeLayout
+            android:id="@+id/fgorder_bottommanager_rl"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorFgOrderbottomBack"
+            android:visibility="@{orderViewModel.showManager}">
+
+            <CheckBox
+                android:id="@+id/fgorder_allchoose_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:button="@drawable/fgorder_allchoose_cbbackselector"
+                android:checked="@{orderViewModel.getAll}"
+                android:clickable="true"
+                android:onClick="@{()->orderViewModel.checkModeChange(orderViewModel.getAll.get())}" />
+
+            <TextView
+                android:id="@+id/fgorder_forpos_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/fgorder_allchoose_rb"
+                android:text="合计:"
+                android:textColor="@color/colorBasicText"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/fgorder_allprice_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/fgorder_forpos_tv"
+                android:text="@{orderViewModel.textPrice}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/fgorder_delete_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/fgorder_pay_btn"
+                android:onClick="@{()->orderViewModel.deleteCartItems()}"
+                android:text="删除"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/fgorder_pay_btn"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/fgorder_bottom_payback"
+                android:onClick="@{()->orderViewModel.payCartItems()}"
+                android:text="@{orderViewModel.textPay}"
+                android:textColor="@color/colorPureWhite"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="订单"
+            android:layout_centerInParent="true"
+            android:text="当前购物车为空..."
             android:textColor="@color/colorBasicText"
-            android:textSize="15sp" />
+            android:textSize="20sp"
+            android:visibility="@{orderViewModel.showEmpty}" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
 </layout>

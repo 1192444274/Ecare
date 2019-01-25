@@ -6,7 +6,7 @@ import android.databinding.ViewDataBinding;
 
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
-import com.amazingdata.ecare.base.BaseBindingRecycleViewAdapter;
+import com.amazingdata.ecare.base.BaseBindingRVAdapter;
 import com.amazingdata.ecare.databinding.DruglistItemBinding;
 import com.amazingdata.ecare.entity.DrugInfo;
 
@@ -14,15 +14,10 @@ import com.amazingdata.ecare.entity.DrugInfo;
  * @author Xiong
  * @date 2019/1/24 - 16:20
  */
-public class DrugListAdapter extends BaseBindingRecycleViewAdapter<DrugInfo, DruglistItemBinding, ViewDataBinding> {
+public class DrugListAdapter extends BaseBindingRVAdapter<DrugInfo, DruglistItemBinding, ViewDataBinding, ViewDataBinding> {
 
-    public DrugListAdapter(Context mContext, ObservableArrayList<DrugInfo> mItems, int mode) {
-        super(mContext, mItems, mode);
-    }
-
-    @Override
-    protected int getNormalLayoutResId() {
-        return R.layout.druglist_item;
+    public DrugListAdapter(Context mContext, ObservableArrayList<DrugInfo> mItems) {
+        super(mContext, mItems);
     }
 
     @Override
@@ -31,13 +26,28 @@ public class DrugListAdapter extends BaseBindingRecycleViewAdapter<DrugInfo, Dru
     }
 
     @Override
-    protected void onBindNormalItem(DruglistItemBinding binding, DrugInfo item, int position) {
+    protected int getItemLayoutResId() {
+        return R.layout.druglist_item;
+    }
+
+    @Override
+    protected int getFooterLayoutResId() {
+        return 0;
+    }
+
+    @Override
+    protected void onBindHeader(ViewDataBinding binding) {
+
+    }
+
+    @Override
+    protected void onBindItem(DruglistItemBinding binding, DrugInfo item, int position) {
         binding.setVariable(BR.drugInfo, item);
         binding.executePendingBindings();
     }
 
     @Override
-    protected void onBindHeaderItem(ViewDataBinding binding) {
+    protected void onBindFooter(ViewDataBinding binding) {
 
     }
 }

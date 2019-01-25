@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Xiong
  * @date 2019/1/22 - 11:09
  */
+// 预约信息
 public class Appoint implements Parcelable, Serializable {
     private int mode; // 1为挂号,2为体检
     private int number; // 预约号

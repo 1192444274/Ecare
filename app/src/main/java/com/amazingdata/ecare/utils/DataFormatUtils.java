@@ -10,4 +10,8 @@ public class DataFormatUtils {
     public static String getOrderNum(int oderNum) {
         return "订单号: " + oderNum;
     }
+
+    public static String getCartPrice(float price) {
+        return String.format("¥ %.2f", price);
+    }
 }

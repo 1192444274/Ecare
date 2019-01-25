@@ -7,7 +7,7 @@ import android.widget.RadioGroup;
 import com.amazingdata.ecare.R;
 import com.amazingdata.ecare.BR;
 import com.amazingdata.ecare.base.BaseActivity;
-import com.amazingdata.ecare.base.BaseBindingRecycleViewAdapter;
+import com.amazingdata.ecare.base.BaseBindingRVAdapter;
 import com.amazingdata.ecare.base.DialogListenerUtils;
 import com.amazingdata.ecare.base.VMConnectedListenerUtils;
 import com.amazingdata.ecare.databinding.ActivityTimechooserBinding;
@@ -69,14 +69,16 @@ public class TimeChooserActivity extends BaseActivity<ActivityTimechooserBinding
             }
         });
         if (isRegister) {
-            mAdapter = new TimeListAdapter(this, viewModel.mDatas, TimeListAdapter.MODE_NORMAL_CHECK);
-            mAdapter.setSomeUnClickable(true);
+            mAdapter = new TimeListAdapter(this, viewModel.mDatas);
+            mAdapter.setCheckMode(BaseBindingRVAdapter.MODE_SINGLE_SELECT)
+                    .setResponseItemDisableClick(true);
             binding.registerRv.setVisibility(View.VISIBLE);
             binding.registerRv.addItemDecoration(new GridSpacingItemDecoration(4, 15, true));
-            mAdapter.setOnItemCheckListener(new BaseBindingRecycleViewAdapter.onItemCheckListener<AppointTime>() {
+
+            mAdapter.setOnItemSelectListener(new BaseBindingRVAdapter.BaseBindingRVListener.onItemSelectListener<AppointTime>() {
                 @Override
-                public void singleSelect(AppointTime appointTime) {
-                    viewModel.setSelectedData(appointTime);
+                public void select(AppointTime data) {
+                    viewModel.setSelectedData(data);
                 }
             });
             binding.registerRv.setAdapter(mAdapter);

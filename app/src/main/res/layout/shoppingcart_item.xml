@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:xbind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.amazingdata.ecare.R" />
+
+        <import type="com.amazingdata.ecare.utils.DataFormatUtils" />
+
+        <variable
+            name="shoppingCartItem"
+            type="com.amazingdata.ecare.entity.ShoppingCartItem" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:background="@color/colorPureWhite"
+        android:clickable="false"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/itemcart_choose_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:button="@drawable/fgorder_cartlist_cbbackselector" />
+
+            <LinearLayout
+                android:id="@+id/itemcart_iconwrapper_ll"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/itemcart_choose_cb"
+                android:background="@drawable/itemcart_goodsicon_back"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/itemcart_icon_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:clickable="true"
+                    xbind:errorRes="@{R.mipmap.img_loaderror}"
+                    xbind:imageUrl="@{shoppingCartItem.goodsIconUrl}"
+                    xbind:placeHolderRes="@{R.mipmap.img_placeholder}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/itemcart_iconwrapper_ll"
+                android:text="@{shoppingCartItem.goodsName}"
+                android:textColor="@color/colorBlackDip"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/itemcart_iconwrapper_ll"
+                android:text="@{DataFormatUtils.getCartPrice(shoppingCartItem.goodsPrice)}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/itemcart_minus_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/numberpicker_minus" />
+
+                <EditText
+                    android:id="@+id/itemcart_inputnum_et"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/numberpicker_editback"
+                    android:inputType="number"
+                    android:text="@{String.valueOf(shoppingCartItem.goodsNum)}"
+                    android:textColor="@color/colorTextBitDeep"
+                    android:textSize="12sp"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/itemcart_add_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/numberpicker_add" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

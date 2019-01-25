@@ -10,6 +10,7 @@ import java.util.Date;
  * @author Xiong
  * @date 2019/1/23 - 10:37
  */
+// 预约时间
 public class AppointTime implements Parcelable, Serializable {
 
     private Date time; // 预约时间

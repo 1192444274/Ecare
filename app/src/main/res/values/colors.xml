@@ -20,4 +20,5 @@
     <color name="colorAppointTimeSelected">#f97f4c</color>
     <color name="colorAppointTimeNormal">#666666</color>
     <color name="colorAppointTimeDisable">#cccccc</color>
+    <color name="colorFgOrderbottomBack">#edf9f7</color>
 </resources>
